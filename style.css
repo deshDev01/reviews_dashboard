@@ -1,0 +1,441 @@
+/* style.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+.sidebar {
+    background-color: #343A40;
+    color: white;
+    padding: 20px;
+    height: 100vh; 
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 60% 40%; ;
+    /* gap: 10px; */
+    padding: 10px;
+    background:#dee2e6;
+    height:100vh;
+    width: 100%;   
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+
+
+
+.component {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+
+
+/* Make the grid layout responsive */
+@media (max-width: 992px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+  
+  .section_1 {
+    display: flex;
+    /* background-color: #f8f9fa; */
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 50px;  
+    padding: 10px;
+    font-size: 20px;
+    margin-left: 10px; 
+  }
+  .timeframe
+  {
+    
+    margin-right:0px;
+  }
+  
+    
+  
+  .section_2 {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff; 
+    height:712px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    max-height: 700px;  
+    overflow-y: auto;
+}
+
+.section_3{
+  height:45vh;
+  background: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  margin-right: 30px;
+  border-radius: 5px;
+
+}
+
+.section_4{
+  height:42vh;
+  background: #fff;
+  margin-right: 30px;
+  border-radius: 5px;
+}
+.button-new
+{
+ 
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+
+  
+  .button-new:hover {background-color: #3e8e41}
+  
+  .button-new:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  .text_3
+  {
+    font-style: italic;
+    margin-left: 220px;
+    
+  }
+
+
+
+  .language-dropdown {
+    position: relative; /* For positioning the dropdown menu */
+  } 
+  
+  .lang1 {
+    cursor: pointer;
+   
+  }
+  
+  
+  .lang-menu {
+    display: None;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    list-style: none;
+    z-index: 1; /* Ensure dropdown is on top */
+  }
+  
+  /* .language-dropdown:hover .lang-menu  {
+    display: block; 
+  } */
+
+  .language-dropdown:hover .lang-menu,
+.lang-menu.show { /* ensure it shows when hover or 'show' class is added */
+    display: block;
+}
+  
+  .lang_m {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #333; 
+  }
+  .chart-container {
+    float:right;
+    height: 1200px; 
+    width: 690px;  
+    margin:20px; 
+    padding-top: 0px;
+    
+  }
+  
+  #myChart {
+    width: 100%; 
+    height: 110%; 
+  }
+  #subcategoryDisplay {
+    height: 315px;
+    max-height: 314; 
+    overflow-y: auto; 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+  
+    
+  }
+  
+  #subcategoryList {
+    margin: 0;
+    padding: 0; 
+    list-style-type: disc; 
+    margin-left: 30px;
+    
+  }
+  
+  #subcategoryList li {
+    padding: 8px; 
+    border-bottom: 1px solid #eee; }
+
+  #subcategoryList li {
+    cursor:pointer; 
+    margin: 2px; 
+  }
+  
+  #subcategoryList li:hover {
+    background-color: #f0f0f0; 
+    color: #333; 
+  }
+
+  h3{
+    font-size: 20px;
+    margin-left: 40px;
+  }
+
+
+/* navbar code
+
+/* Tooltip styling */
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 900px;
+  left: 1200px;
+  transform: translateX(-50%);
+  font-size: 18px;
+
+  /* Tooltip arrow */
+  ::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+  }
+}
+
+/* Show the tooltip text when hovering over the button */
+.div-5 button:hover .tooltip {
+  visibility: visible;
+}
+
+
+
+
+ .chatbox { 
+    width: 500px;
+    height: 700px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: move; /* Indicate that the header is draggable */
+ }
+
+ .chat-messages {
+    height: 550px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f1f1f1;
+    background-color:#ccc;
+}
+
+.chat-input {
+    width: calc(100% - 20px);
+    height:50px;
+    padding: 10px;
+    border: none;
+    flex-direction: column;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+
+.chat-header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #007bff;
+  cursor: move; 
+  display: flex;       
+   justify-content: space-between; 
+  align-items: center; 
+  padding: 10px;  
+  height:40px;     
+   
+}  
+
+/* Style for the text to ensure it doesn't wrap or overflow */
+
+
+
+
+
+.chat-header span {
+  white-space: nowrap;  /* Prevents the text from wrapping */
+  overflow: hidden;     /* Prevents overflow of text */
+  text-overflow: ellipsis; 
+  font-weight: bold;
+  font:30px;
+  margin:10px;/* Adds ellipsis if text overflows */
+}
+
+/* Button styling (already inline, but keeping here for any additional styling) */
+#cross {
+  margin-left: auto; /* Pushes the button to the far right */
+  display: flex;     /* Aligns the icon inside the button */
+  align-items: center;
+  margin-right: 20px;
+}
+
+
+.chat-footer
+{
+  display: flex;
+  flex-direction: row;
+
+}
+/* .chat-buttons
+{
+  margin-left: auto;
+  width:80px;
+  font-size: 60px;
+  margin-right: 40px;
+  height: 60px;
+} */
+
+.chat-buttons button {
+  font-size: 16px; /* Make sure font size is sufficient */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-paper-plane {
+  
+  font-size: 24px;
+  margin:20px; /* Adjust size as necessary */
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Enable scrolling for long message lists */
+  padding: 10px;
+  /* background-color:#eee; */
+}
+
+
+.chat-message-left {
+  align-self: flex-start; /* Aligns the message to the left */
+  background-color:#eee; /* Example: Blue background for one party */
+  width:max-content;
+  padding: 20px;
+  margin: 4px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  word-wrap: break-word;
+  font-size: 20px;
+}
+
+.chat-message-right {
+  align-self: flex-end; /* Aligns the message to the right */
+  background-color:#eee;/* Example: Green background for another party */
+  width:max-content;
+  padding: 20px;
+  margin: 4px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  word-wrap: break-word;
+  font-size: 20px;
+}
+
+ 
+.chat-message {
+  max-width: 80%; /* Restricts maximum width of message */
+  font-weight: bold;
+  align-items: flex-end;
+  width:max-content;
+  padding: 8px 12px; /* Padding inside the message box */
+  margin: 4px 0; /* Adds space between messages */
+  border-radius: 10px; /* Rounded corners for the message box */
+  word-wrap: break-word;
+  display: flex;
+  align-items: center; 
+  background-color:#eee
+  
+}
+
+
+.welcome-message {  /* Optional styling for welcome message */
+  background-color:#eee; /* Remove background color */
+  font-weight: bold;
+  padding:20px;
+  border-radius: 10px;
+  width:max-content;
+  font-size: 20px;
+}
+
+
+
+

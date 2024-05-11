@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<title>Reviews Analysis</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+</head>
+<body>
+    <header class="flex w-screen h-26 border-b-2 border-gray-200">
+        <div class="flex flex-row w-screen justify-end">
+            <button 
+            onclick="window.location.reload();"
+            class="flex items-center px-6 w-full font-Cabin font-bold text-[#636363] text-3xl" style="font-family: 'Inter', serif;" >Reviews Dashboard</button>
+            <div class="flex flex-row py-3 px-5 items-center  flex-row w-full justify-end">
+              <div class="flex flex-row h-full items-center w-max space-x-8">
+                  <button id="chat"
+                  style = "display: none"
+                  class="flex h-10 
+                  hover:bg-gray-500
+                  w-24 items-center text-white font-bold justify-center p-4 rounded-md border-1 border-color-gray-200 w-18 bg-gray-600">
+                    <span class="">Chat</span>
+                  </button>
+
+                  <svg class="flex h-12 items-center -ml-8" width="21" height="6" viewBox="0 0 21 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse opacity="0.4" cx="2.49088" cy="2.83098" rx="2.49088" ry="2.39437" fill="black"/>
+                    <ellipse opacity="0.4" cx="10.4617" cy="2.83098" rx="2.49088" ry="2.39437" fill="black"/>
+                    <ellipse opacity="0.4" cx="18.4325" cy="2.83098" rx="2.49088" ry="2.39437" fill="black"/>
+                    </svg>
+                    
+                  
+                  <div class="flex rounded-full h-12 bg-gray-300 w-12">
+                  </div>
+                </div>
+
+              <!-- chatbot func -->
+    <div id="chatbox" class="chatbox" style="display: none;">
+    <div class="chat-header bg-[#303030] ">
+      <span>Desh AI Virtual Assistant</span>
+      
+      <button id='cross' style="background: none; border: none; cursor: pointer; padding: 0; outline: none;"><i class="fa-solid fa-x" style="font-size: 20px";></i></button>
+  </div>
+  <div class="chat-messages bg-[#EEEEEE] text-sm   font-base" id="chat-messages">
+      <!-- Messages will be added here dynamically -->
+  </div>
+  <div class="chat-footer h-12 mt-14 ">
+  <input type="text" class="chat-input focus:outline-none text-md" id="chat-input" placeholder="Type your message..." style="font-size: 20px;">
+  <div class="chat-buttons">
+    <button id="sendButton"><i class="fa-solid fa-paper-plane"></i></button>
+  </div>
+</div>
+</div>
+<!--  -->
+            
+            </div>
+          </div>
+          <style>
+            .div {
+              background-color: #fff;
+              display: flex;
+              /* position: fixed; */
+              gap: 60px;
+              margin: 10px 8px; 
+              
+            }
+            @media (max-width: 991px) {
+              .div {
+                flex-wrap: wrap;
+                /* padding: 0 20px; */
+              }
+            }
+            .div-2 {
+              color: #636363;
+              text-align: center;
+              /* flex-grow: 1;
+              flex-basis: auto; */
+              margin-left: 20px;
+              margin:auto 0;
+              font: 700 44px Cabin, sans-serif;
+              margin-left:30px;
+            }
+            .div-3 {
+              display: flex;
+              gap: 60px;
+              justify-content: space-between;
+              margin-left:990px;
+            }
+            .div-4 {
+              display: flex;
+              flex-direction: column;
+              font-size: 14px;
+              color: #fff; 
+              font-weight: 500;
+              white-space: nowrap;
+              text-align: center;
+              justify-content: center;
+            }
+            @media (max-width: 991px) {
+              .div-4 {
+                white-space: initial;
+              }
+            }
+            .div-5 {
+              font-feature-settings: "clig" off, "liga" off;
+              font-family: Inter, sans-serif;
+              border-radius: 5px;
+              /* border-color: rgba(99, 99, 99, 1); */
+              border-style: solid;
+              border-width: 1px;
+              /* background-color: #636363; */
+              justify-content: center;
+              padding: 14px 43px;
+            }
+            @media (max-width: 991px) {
+              .div-5 {
+                white-space: initial;
+                padding: 0 20px;
+              }
+            }
+            .div-6 {
+              display: flex;
+              gap: 60px;
+            }
+            .img {
+              aspect-ratio: 4.17;
+              object-fit: auto;
+              object-position: center;
+              width: 21px;
+              margin: auto 0;
+            }
+            .div-7 {
+              background-color: #d9d9d9;
+              border-radius: 50%;
+              width: 41px;
+              height: 39px;
+            }
+          </style>
+
+          
+          
+        
+           
+    </header>
+   
+    <main class="content">
+        <section class="left-column">
+            <div class="flex flex-row h-12 w-full items-center py-4 justify-between px-6">
+                <div class="text">
+                    <h3 class = "title_text text-xl font-semibold ">Reviews</h3></div>
+                    <div class="flex flex-row space-x-8">
+                    <div class="language-dropdown pt-2">
+                        <span class="font-semibold ">Data Source</span>
+                        <i class='bx bx-chevron-down'></i>
+                        <ul class="lang-menu">
+                            <li><a href="#" class="lang_m" data-lang="Hindi" onclick="fetchData('Hindi')">Hindi</a></li>
+                            <li><a href="#" class="lang_m" data-lang="Telugu" onclick="fetchData('Telugu')">Telugu</a></li>
+                            <li><a href="#" class="lang_m" data-lang="Malayalam" onclick="fetchData('Malayalam')">Malayalam</a></li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-row pt-2 ">
+                      <div class="flex flex-row px-4 ">
+                        <label class="font-semibold" for="start-date">Start Date:</label>
+                        <input class="bg-[#EEEEEE] tracking-tighter select-none focus:outline-none" value="2020-01-01" type="date" id="start-date" name="start-date">
+                      </div>
+                      <div class="flex flex-row px-4">
+                        <label class="font-semibold" for="end-date">End Date:</label>
+                        <input class="bg-[#EEEEEE] tracking-tighter select-none focus:outline-none" value="2024-01-01" type="date" id="end-date" name="end-date">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <div id="loadingModal" style="display: none;" class="absolute  w-screen h-screen">
+              <div class="flex h-screen w-screen items-center ">
+                  <div class="flex flex-row  rounded-md ml-16 bg-[#636363] p-4 text-xl text-white text-bold">
+                    Loading Data...
+                    <svg aria-hidden="true" class="w-8 h-8 ml-4 text-gray-200 animate-spin dark:text-gray-600 fill-white" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                      <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                  </svg>
+                  </div>
+              </div>
+            </div>
+            <div class="section_2 items-center">
+                <table id="example" class="table-auto cell-border text-nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Review Id</th>
+                        <th>Category</th>
+                        <th>Text</th>
+                        <th>Subcategory</th>
+                        <th>Review Link</th>
+                        <th>Derived Category</th>
+                    </tr>
+                </thead>
+            </table></div>
+        </section>
+        <section class="right-column">
+          <div class="flex h-9 pt-3 pl-1 text-xl font-semibold">Categories and Subcategories</div>
+
+            <div class="section_3">
+              <button class="text_2 flex underline font-bold text-xl justify-center w-full h-[100%] pb-[25%] pt-[25%]" 
+              style="background-image:linear-gradient(rgba(255, 255, 255, 0.397), rgba(255, 255, 255, 0.397)), url(https://www.shutterstock.com/image-vector/abstract-financial-chart-uptrend-line-600nw-687485104.jpg)"
+              id="analyzeBtn">Click to Analyze</button>
+                <div class="chart-container h-full px-6">
+                    <canvas id="myChart"></canvas>
+                  </div>
+                 
+            </div>
+
+
+            <div class="section_4 flex p-4 flex-col justify-between flex-col ">
+                <div class="flex text-sub items-center h-12 justify-center font-bold ">Please Select a Category from Analysis Chart</div>
+                <input type="text" id="searchSubInput" class="flex border-2 border-gray-200 focus:outline-none rounded-md p-2" placeholder="Search Subcategory" />
+                <div class="flex flex-col justify-between h-full border-none" id="subcategoryDisplay">
+                    <ul class="flex  flex-col h-max" id="subcategoryList"></ul>
+                  </div>
+            </div>
+
+        </section>
+    </main>
+    
+        <script src="/static/dashboard_new.js"></script>
+</body>
+</html>
